@@ -7,8 +7,9 @@ import arrow.core.toOption
 class Person(val name: String)
 
 /**
- * Often a class has an optional (or nullable) data member, and
- * you need to either use that value or a default value.
+ * Classes often have optional or nullable data members, and
+ * one common pattern is needing to pull out something contained
+ * in that data member, or a default value if it doesn't exist.
  *
  * This class shows a demo of how to do that using idiomatic Kotlin
  * (using nulls) and how the same thing would be achieved using
@@ -23,10 +24,10 @@ fun usingNulls() {
     }
 
     val band1 = Band(Person("Mick Shrimpton"))
-    println("[using null] Drummer 1 = ${getDrummerName(band1)}")
+    println("[Get default using null] Drummer 1 = ${getDrummerName(band1)}")
 
     val band2 = Band(null)
-    println("[using null] Drummer 2 = ${getDrummerName(band2)}")
+    println("[Get default using null] Drummer 2 = ${getDrummerName(band2)}")
 }
 
 fun usingOption() {
@@ -38,10 +39,10 @@ fun usingOption() {
         )
     }
     val band1 = Band(Person("Mick Shrimpton").toOption())
-    println("[using Option] Drummer 1 = ${getDrummerName(band1)}")
+    println("[Get default using Option] Drummer 1 = ${getDrummerName(band1)}")
 
     val band2 = Band(none())
-    println("[using Option] Drummer 2 = ${getDrummerName(band2)}")
+    println("[Get default using Option] Drummer 2 = ${getDrummerName(band2)}")
 }
 
 fun main() {
